@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon'
+import Tooltip from '../components/Tooltip.astro'
+import Layout from '../layouts/Layout.astro'
+import { emails } from '../data'
+
+emails.sort((a, b) => b.length - a.length)
+---
+
+<Layout title="Connect with Fiezt">
+    <div class="h-full static w-screen-sm">
+        <div
+            class="absolute top-0 inset-x-0 flex justify-center items-center py-8"
+        >
+            <Tooltip label="Back">
+                <a href="/" title="Back">
+                    <Icon
+                        class="w-full h-20 fill-white stroke-black"
+                        name="ic:round-keyboard-backspace"
+                    />
+                </a>
+            </Tooltip>
+        </div>
+        <div
+            class="container mx-auto items-center justify-center flex flex-col space-y-2 h-full"
+        >
+            {
+                emails.map((v, i) => (
+                    <div class="flex flex-row items-center justify-center space-x-2">
+                        <a href={`mailto:${v}`}>
+                            <p>{v}</p>
+                        </a>
+                        <a
+                            href="javascript:void(0)"
+                            id={`copyButton-${i}`}
+                            class="p-1 rounded-md bg-indigo-400 hover:bg-indigo-500"
+                            title="Copy"
+                            onclick={`copy("${v}", ${i})`}
+                        >
+                            <Icon
+                                class="w-6 fill-white stroke-white stroke-2"
+                                name="ph:copy"
+                            />
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Layout>
+<script is:inline>
+    function copy(text, id) {
+        navigator.clipboard.writeText(text)
+        let copyButton = document.getElementById(`copyButton-${id}`)
+        let copiedElement = '<span class="text-sm">Copied!</span>'
+        if (copyButton.innerHTML.includes(copiedElement)) return
+        let temp = copyButton.innerHTML
+        copyButton.innerHTML = copiedElement
+        setTimeout(() => {
+            copyButton.innerHTML = temp
+        }, 3000)
+    }
+</script>
+<style></style>
