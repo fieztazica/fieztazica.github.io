@@ -11,7 +11,7 @@ const socials: HrefIcon[] = [
     {
         name: 'GitHub',
         icon: 'mdi:github',
-        href: 'https://github.com/fiezt1492',
+        href: 'https://github.com/fieztazica',
     },
     {
         name: 'LinkedIn',
@@ -51,9 +51,6 @@ const emails = [
     'tiendat.dev@outlook.com',
     'hoangtiendat.dev@gmail.com',
     'fiezt@outlook.com',
-    'fiezt@nyte.tk',
-    'fiezt@skiff.com',
-    'tiendat@skiff.com',
 ]
 
 export { socials, navLinks, about, emails }

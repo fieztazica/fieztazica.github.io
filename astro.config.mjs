@@ -1,10 +1,9 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
 
-import tailwind from "@astrojs/tailwind";
+import tailwind from '@astrojs/tailwind'
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://fiezt1492.github.io',
-  base:"/"
-});
+    integrations: [tailwind()],
+    site: 'https://fieztazica.github.io',
+})
